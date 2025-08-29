@@ -15,7 +15,7 @@ export const registerController = async (req: Request, res: Response) => {
   const isUserExists = await userModel.findOne({
     $or: [{ username: username }, { email: email }],
   });
-
+  
   if (isUserExists) {
     return res.status(401).json({
       message: "Can't Create the User ! User is Already Exists",
@@ -63,7 +63,7 @@ export const loginController = async (req: Request, res: Response) => {
   });
 };
 
-// this is going to be used for getting the user info
+// this is going to be used for getting the user info with the cookie token that we had set earlier. 
 export const getUser = async(req:AuthRequest , res:Response)=>{
      const user = req.user
     
