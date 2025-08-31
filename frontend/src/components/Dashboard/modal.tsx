@@ -14,11 +14,9 @@ const formSchema = z.object({
 })
 export type FormDataNotes = z.infer<typeof formSchema>
 const Modal:React.FC<modal> = ({open , setOpen}) => {
-<<<<<<< HEAD
+
     const {register , handleSubmit , formState:{errors} , reset} = useForm<FormDataNotes>({
-=======
-    const {register , formState:{errors}} = useForm<FormData>({
->>>>>>> 140999abda8a90e483e19e53dc6a9eab7e5d35ef
+
        resolver: zodResolver(formSchema)
     })
     
