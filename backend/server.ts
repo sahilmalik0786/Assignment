@@ -1,5 +1,5 @@
-import './src/env.ts'
-import app from './src/app.ts'
+import './src/env.js'
+import app from './src/app.js'
 
 
 

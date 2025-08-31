@@ -1,2 +1,7 @@
 node_modules
 .env
+dist
+server.js
+server.js.map
+server.d.ts
+server.d.ts.map
