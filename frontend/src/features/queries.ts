@@ -1,6 +1,6 @@
 import apiClient from "../services/apiClient";
 import type { FormData } from "../components/register-form";
-import { AxiosError } from "axios";
+
 import type { FormDataLogin } from "../components/login-form";
 
 
