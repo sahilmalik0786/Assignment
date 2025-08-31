@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+
 import { createFileRoute, redirect } from '@tanstack/react-router'
 import { queryClient } from '../queryClient';
 import { fetchMe, type User } from '../features/queries';
