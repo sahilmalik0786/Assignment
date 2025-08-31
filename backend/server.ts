@@ -1,6 +1,6 @@
 import './src/env.ts'
 import app from './src/app.ts'
-console.log(process.env.MONGODB_URI)
+
 
 
 
