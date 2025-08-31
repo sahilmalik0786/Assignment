@@ -9,7 +9,7 @@ import Modal from './modal'
 
 
 const DashboardComp = () => {
-    const {me} = useLoaderData({from:'/dashboard'})
+    
     const  [open, setOpen] = useState<boolean>(false)
      
   return (
