@@ -2,6 +2,8 @@ import{z} from 'zod'
 import {useForm} from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { X } from 'lucide-react'
+import { useCreateNote } from '../../hooks/useCreateNote'
+import { toast } from 'react-toastify'
 
 interface modal {
     open:boolean
@@ -10,12 +12,20 @@ interface modal {
 const formSchema = z.object({
     title:z.string().min(1,"please enter your note first")
 })
-type FormData = z.infer<typeof formSchema>
+export type FormDataNotes = z.infer<typeof formSchema>
 const Modal:React.FC<modal> = ({open , setOpen}) => {
-    const {register , handleSubmit , formState:{errors}} = useForm<FormData>({
+    const {register , handleSubmit , formState:{errors} , reset} = useForm<FormDataNotes>({
        resolver: zodResolver(formSchema)
     })
     
+    const createNote = useCreateNote()
+  const onSubmit =  async (data:FormDataNotes)=>{
+     const res = await  createNote.mutateAsync(data)
+             toast(res)
+             reset()
+             setOpen(prev=>!prev)
+  }
+
   return (
          <div
       className={`fixed inset-0 flex items-center justify-center z-50 transition-all duration-300 ${
@@ -57,7 +67,7 @@ const Modal:React.FC<modal> = ({open , setOpen}) => {
                 </div>
                     <button
                     type="submit"
-                    // onClick={handleSubmit(onSubmitWithOtp)}
+                    onClick={handleSubmit(onSubmit)}
                     className="w-full rounded-lg bg-blue-500 py-3 text-white font-medium hover:bg-blue-600 transition"
                   >
                     Create

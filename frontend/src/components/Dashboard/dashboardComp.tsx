@@ -20,7 +20,7 @@ const DashboardComp = () => {
         <DashBtn setOpen={setOpen}/>
        </div>
   <Modal open={open} setOpen={setOpen} />
-       <div className='w-full h-full px-3 '>
+       <div className='w-full h-full px-3 max-w-4xl mx-auto'>
             <DashNotes />
        </div>
     </div>
