@@ -12,7 +12,7 @@ const formSchema = z.object({
 })
 type FormData = z.infer<typeof formSchema>
 const Modal:React.FC<modal> = ({open , setOpen}) => {
-    const {register , handleSubmit , formState:{errors}} = useForm<FormData>({
+    const {register , formState:{errors}} = useForm<FormData>({
        resolver: zodResolver(formSchema)
     })
     
