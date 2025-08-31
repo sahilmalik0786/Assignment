@@ -5,7 +5,7 @@ import userModel from '../models/user.model.js'
 
 interface AUser{
     email:string,
-    username:string,
+    fullName:string,
     id:string
 }
 
@@ -31,7 +31,7 @@ export const authUser = async(req:AuthRequest , res:Response , next:NextFunction
                 message:'User not found'
             })
         }
-        req.user = { id: user._id.toString(), email: user.email, username: user.username };
+        req.user = { id: user._id.toString(), email: user.email, fullName: user.fullName };
         next()
     } catch (error) {
         console.log(error)

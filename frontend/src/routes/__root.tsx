@@ -1,4 +1,5 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { ToastContainer } from 'react-toastify'
 
 
 export const Route = createRootRoute({
@@ -14,7 +15,7 @@ export const Route = createRootRoute({
       </div> */}
       <hr />
       <Outlet />
-      
+      <ToastContainer />
     </>
   ),
 })

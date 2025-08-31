@@ -6,7 +6,7 @@ export const Route = createFileRoute('/auth/register')({
 })
 
 function RouteComponent() {
-  return <div className=' bg-red-900 h-screen '>
+  return <div className='  h-screen '>
      <RegisterForm />
   </div>
 }
