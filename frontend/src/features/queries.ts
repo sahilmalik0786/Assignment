@@ -1,5 +1,9 @@
 import apiClient from "../services/apiClient";
 import type { FormData } from "../components/register-form";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 140999abda8a90e483e19e53dc6a9eab7e5d35ef
 import type { FormDataLogin } from "../components/login-form";
 import type { FormDataNotes } from "../components/Dashboard/modal";
 
@@ -100,6 +104,7 @@ export const fetchMe = async (): Promise<User> => {
   return res.data.user;
 };
 
+<<<<<<< HEAD
 export const createNote = async (data:FormDataNotes): Promise<string> => {
   try {
     const res = await apiClient.post<messageResponse>(
@@ -129,3 +134,6 @@ export const deleteNote = async (noteId: string): Promise<string> => {
     return "Something went wrong, please try again.";
   }
 };
+=======
+}
+>>>>>>> 140999abda8a90e483e19e53dc6a9eab7e5d35ef

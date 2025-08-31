@@ -1,4 +1,4 @@
-import { useLoaderData } from '@tanstack/react-router'
+
 import Dashnav from './dashnav'
 import DashUser from './dashUser'
 import DashBtn from './dashBtn'
@@ -9,7 +9,7 @@ import Modal from './modal'
 
 
 const DashboardComp = () => {
-    const {me} = useLoaderData({from:'/dashboard'})
+    
     const  [open, setOpen] = useState<boolean>(false)
      
   return (
