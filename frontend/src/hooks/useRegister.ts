@@ -9,7 +9,7 @@ export const useRegister = ()=>{
     return useMutation({
         mutationFn:(credential:FormData)=>registerWithOtp(credential),
         onSuccess:async()=>{
-            await queryClient.invalidateQueries({queryKey:['me']})
+            // await queryClient.invalidateQueries({queryKey:['me']})
             navigate({to:'/dashboard'})
         }
     })
