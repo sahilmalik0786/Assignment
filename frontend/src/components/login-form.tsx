@@ -17,6 +17,7 @@ const formSchema = z.object({
 
 export type FormDataLogin = z.infer<typeof formSchema>;
 
+
 const LoginForm = () => {
   const {
     register,
@@ -44,8 +45,8 @@ const LoginForm = () => {
   const handleResend = async(data:FormDataLogin) =>{
      try {
        await getOtp.mutateAsync(data);
-      toast("OTP resent!");
-      setCooldown(90); // restart cooldown
+       toast("OTP resent!");
+       setCooldown(90); // restart cooldown
     } catch (err: any) {
       toast.error(err.message || "Failed to resend OTP");
     }
@@ -57,7 +58,7 @@ const LoginForm = () => {
      try {
     const message = await LoginUser.mutateAsync(data);
     toast(message);
-    navigate({ to: '/dashboard' });
+    // navigate({ to: '/dashboard' });
   } catch (err: any) {
     toast.error(err.message || "Something went wrong");
   }

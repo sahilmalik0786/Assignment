@@ -8,14 +8,14 @@ export const Route = createFileRoute('/dashboard')({
   
     
       loader: async () => {
-    try {
-      const me = await queryClient.fetchQuery<User>({
+       try {
+       const me = await queryClient.fetchQuery<User>({
         queryKey: ["me"],
         queryFn: fetchMe,});
         return { me };
-    } catch {
+      } catch {
       throw redirect({ to: "/auth/login" });
-    }
+     }
   },
   
   

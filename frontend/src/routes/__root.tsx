@@ -13,7 +13,7 @@ export const Route = createRootRoute({
           About
         </Link>
       </div> */}
-      <hr />
+      
       <Outlet />
       <ToastContainer />
     </>

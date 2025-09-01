@@ -50,7 +50,7 @@ import { useOtpRegister } from "../hooks/useOtp";
      try {
     const message = await registerUser.mutateAsync(data);
     toast(message);
-    navigate({ to: '/dashboard' });
+    // navigate({ to: '/dashboard' });
   } catch (err: any) {
     toast.error(err.message || "Something went wrong");
   }
