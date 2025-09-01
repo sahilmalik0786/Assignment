@@ -108,7 +108,7 @@ const LoginForm = () => {
                     onClick={handleSubmit(onSubmitWithOtp)}
                     className="w-full rounded-lg bg-blue-500 py-3 text-white font-medium hover:bg-blue-600 transition"
                   >
-                    Verify Otp
+                    {LoginUser.isPending ? 'Verifying' :'Verify Otp'}
                   </button>
                 ) : (
                   <button
@@ -116,7 +116,7 @@ const LoginForm = () => {
                     onClick={handleSubmit(onSubmit)}
                     className="w-full rounded-lg bg-blue-500 py-3 text-white font-medium hover:bg-blue-600 transition"
                   >
-                    Get OTP
+                    {getOtp.isPending ? 'Sending' :'Get Otp'}
                   </button>
                 )}
               </form>

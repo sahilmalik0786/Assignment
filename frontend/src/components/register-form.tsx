@@ -38,23 +38,25 @@ import { useOtpRegister } from "../hooks/useOtp";
     const onSubmit =  async(data: FormData) => {
       console.log('hello ')
         const message = await getOtp?.mutateAsync(data ,{
+              
             onSuccess:()=>setOtp(true)
+            
           })
         toast(message)
     };
     
     const registerUser = useRegister()
     const onSubmitWithOtp = async (data: FormData)=> {
-      
-      const message = await registerUser.mutateAsync(data,{
-        onSuccess(){
-          navigate({to:'/dashboard'})
-        }
-      })
-      toast(message)
+     try {
+    const message = await registerUser.mutateAsync(data);
+    toast(message);
+    navigate({ to: "/dashboard" });
+  } catch (err: any) {
+    toast.error(err.message || "Something went wrong");
+  }
     }
     
-   console.log( registerUser.isPending)
+   console.log( registerUser.isPending )
     return (
       <div className="h-full  bg-white flex items-start  justify-center px-4">
         <div className="md:w-[45%] w-full h-full flex  justify-center ">
@@ -155,13 +157,13 @@ import { useOtpRegister } from "../hooks/useOtp";
                   onClick={handleSubmit(onSubmitWithOtp)}
                   className="w-full rounded-lg bg-blue-500 py-3 text-white font-medium hover:bg-blue-600 transition"
                 >
-                  {getOtp?.isPending ? 'Sending' : 'Verify Otp'}
+                  {registerUser?.isPending ? 'Verifying' : 'Verify Otp'}
                 </button> :   <button
                   type="submit"
                   onClick={handleSubmit(onSubmit)}
                   className="w-full rounded-lg bg-blue-500 py-3 text-white font-medium hover:bg-blue-600 transition"
                 >
-                  Get OTP
+                  {getOtp.isPending ? 'Sending' : 'Get Otp'}
                 </button>}
               </form>
               <p className="text-center text-sm text-gray-500">

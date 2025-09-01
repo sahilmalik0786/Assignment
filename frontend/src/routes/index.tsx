@@ -33,7 +33,7 @@ function RouteComponent() {
         Write it down. Find it fast. <br /> Keep it forever. 
       </h1>
       {isAuthenticated ?  <button onClick={()=>navigate({to:'/dashboard'})}
-            className="w-full rounded-lg bg-blue-500 py-1 px-3 text-white font-medium hover:bg-blue-600 transition"
+            className="w-fit rounded-lg bg-blue-500 py-1 px-3 text-white font-medium hover:bg-blue-600 transition"
             >
              Dashboard
           </button> :  <button onClick={()=>navigate({to:'/auth/register'})}
