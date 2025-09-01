@@ -1,5 +1,5 @@
 
-import { createFileRoute, redirect } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import { queryClient } from '../queryClient';
 import { fetchMe, type User } from '../features/queries';
 import DashboardComp from '../components/Dashboard/dashboardComp';
