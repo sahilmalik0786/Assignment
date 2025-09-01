@@ -1,5 +1,5 @@
 
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
 import { queryClient } from '../queryClient';
 import { fetchMe, type User } from '../features/queries';
 import DashboardComp from '../components/Dashboard/dashboardComp';
@@ -11,10 +11,13 @@ export const Route = createFileRoute('/dashboard')({
        try {
        const me = await queryClient.fetchQuery<User>({
         queryKey: ["me"],
-        queryFn: fetchMe,});
+        queryFn: fetchMe,
+      });
         return { me };
       } catch {
-      // throw redirect({ to: "/auth/login" });
+       throw redirect({ to: "/auth/login" });
+      // console.log(error)
+      // console.log('hello')
      }
   },
   
