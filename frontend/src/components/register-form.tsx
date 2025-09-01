@@ -8,7 +8,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useRegister } from "../hooks/useRegister";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { useOtpRegister } from "../hooks/useOtp";
 
   const formSchema = z.object({
@@ -32,7 +32,7 @@ import { useOtpRegister } from "../hooks/useOtp";
     } = useForm<FormData>({
       resolver: zodResolver(formSchema),
     });
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [otp, setOtp] = useState<boolean | null>()
     const getOtp = useOtpRegister()
     const onSubmit =  async(data: FormData) => {

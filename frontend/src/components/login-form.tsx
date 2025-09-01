@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import logo from "../assets/logo.png";
 import rightColumn from "../assets/right-column.png";
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 
 import { toast } from "react-toastify";
 import { useOtpLogin } from "../hooks/useOtpLogin";
@@ -26,7 +26,7 @@ const LoginForm = () => {
   } = useForm<FormDataLogin>({
     resolver: zodResolver(formSchema),
   });
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [otp, setOtp] = useState<boolean | null>();
   const [cooldown, setCooldown] = useState<number>(0)
   const getOtp = useOtpLogin();
