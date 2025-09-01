@@ -3,14 +3,20 @@ import Dashnav from './dashnav'
 import DashUser from './dashUser'
 import DashBtn from './dashBtn'
 import DashNotes from './dashNotes'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Modal from './modal'
+import { useAuth } from '../../hooks/useAuth'
+import { useNavigate } from '@tanstack/react-router'
 
 
 
 const DashboardComp = () => {
-    
+    const navigate = useNavigate()
     const  [open, setOpen] = useState<boolean>(false)
+    const {isAuthenticated} = useAuth()
+    useEffect(()=>{
+      !isAuthenticated&&navigate({to:'/auth/register'})
+    },[isAuthenticated])
      
   return (
     <div className='w-full text-primarytext relative'>

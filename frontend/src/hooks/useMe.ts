@@ -4,7 +4,7 @@ import { fetchMe } from "../features/queries"
 export const useMe = ()=>{
      return useQuery({
         queryKey:['me'],
-        queryFn:fetchMe,
+        queryFn:async ()=> await fetchMe,
         retry:false
      })
 }
