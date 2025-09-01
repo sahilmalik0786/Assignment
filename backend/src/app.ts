@@ -1,3 +1,4 @@
+import './env.js'
 import  express  from "express";
 import type { Application } from "express";
 import connectDB from "./config/db.js";
@@ -8,7 +9,10 @@ import authRoutes from './routes/user.routes.js'
 import notesRoutes from './routes/notes.routes.js'
 
 const app:Application = express()
+const PORT:number = 3000
 connectDB()
+
+
 
 app.use(express.json())
 app.use(cookieparser())
@@ -23,4 +27,6 @@ app.use('/api/auth', authRoutes)
 //notes routes will handle with this
 app.use('/api/notes' , notesRoutes)
 
-export default app 
+app.listen(PORT , ()=>{
+    console.log('hello server is runnig on port ')
+})
