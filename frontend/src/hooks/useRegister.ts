@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query"
 import { registerWithOtp } from "../features/queries"
 import type { FormData } from "../components/register-form"
-import { queryClient } from "../queryClient"
+
 import { useNavigate } from "@tanstack/react-router"
 
 export const useRegister = ()=>{
