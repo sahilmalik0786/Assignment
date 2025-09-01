@@ -1,0 +1,1 @@
+{"version":3,"file":"notes.model.d.ts","sourceRoot":"","sources":["../../src/models/notes.model.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,QAAQ,EAAkB,KAAK,EAAE,MAAM,UAAU,CAAA;AAEzD,UAAU,MAAO,SAAQ,QAAQ;IAC7B,KAAK,EAAC,MAAM,CAAC;IACb,IAAI,EAAC,KAAK,CAAC,QAAQ,CAAC;CACvB;AAYD,QAAA,MAAM,UAAU;;;;OAAoC,CAAA;AAEpD,eAAe,UAAU,CAAA"}
