@@ -48,13 +48,13 @@ import { useOtpRegister } from "../hooks/useOtp";
       
       const message = await registerUser.mutateAsync(data,{
         onSuccess(){
-          navigate({href:'/dashboard'})
+          navigate({to:'/dashboard'})
         }
       })
       toast(message)
     }
     
-    
+   console.log( registerUser.isPending)
     return (
       <div className="h-full  bg-white flex items-start  justify-center px-4">
         <div className="md:w-[45%] w-full h-full flex  justify-center ">
