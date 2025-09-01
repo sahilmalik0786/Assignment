@@ -14,7 +14,7 @@ export const Route = createFileRoute('/dashboard')({
         queryFn: fetchMe,});
         return { me };
       } catch {
-      throw redirect({ to: "/auth/login" });
+      // throw redirect({ to: "/auth/login" });
      }
   },
   
