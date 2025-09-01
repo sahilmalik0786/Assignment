@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import logo from "../assets/logo.png";
 import rightColumn from "../assets/right-column.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 
 import { toast } from "react-toastify";
@@ -25,27 +25,51 @@ const LoginForm = () => {
   } = useForm<FormDataLogin>({
     resolver: zodResolver(formSchema),
   });
-
   const navigate = useNavigate();
   const [otp, setOtp] = useState<boolean | null>();
+  const [cooldown, setCooldown] = useState<number>(0)
   const getOtp = useOtpLogin();
   const onSubmit = async (data: FormDataLogin) => {
-    console.log("hello ");
+    
     const message = await getOtp?.mutateAsync(data, {
-      onSuccess: () => setOtp(true),
+      onSuccess: () => {
+        setOtp(true)
+        setCooldown(90)
+      }
     });
+
     toast(message);
   };
+ 
+  const handleResend = async(data:FormDataLogin) =>{
+     try {
+       await getOtp.mutateAsync(data);
+      toast("OTP resent!");
+      setCooldown(90); // restart cooldown
+    } catch (err: any) {
+      toast.error(err.message || "Failed to resend OTP");
+    }
+  };
+  
 
   const LoginUser = useLogin();
   const onSubmitWithOtp = async (data: FormDataLogin) => {
-    const message = await LoginUser.mutateAsync(data, {
-      onSuccess() {
-        navigate({ to: "/dashboard" });
-      },
-    });
+     try {
+    const message = await LoginUser.mutateAsync(data);
     toast(message);
+    navigate({ to: '/dashboard' });
+  } catch (err: any) {
+    toast.error(err.message || "Something went wrong");
+  }
   };
+
+    useEffect(() => {
+    let timer:ReturnType<typeof setTimeout>;
+    if (cooldown > 0) {
+      timer = setTimeout(() => setCooldown(cooldown - 1), 1000);
+    }
+    return () => clearTimeout(timer);
+    }, [cooldown]);
   
   return (
     <div className="h-full bg-white flex items-start  justify-center px-4">
@@ -101,7 +125,9 @@ const LoginForm = () => {
                     )}
                   </div>
                 )}
-
+                {otp && <button className="text-blue-500 underline w-fit p-1 " onClick={handleSubmit(handleResend)} disabled={cooldown > 0 || getOtp.isPending}>
+                     {cooldown > 0 ? `Resend in ${cooldown}s` : "Resend OTP"}
+                  </button>}
                 {otp ? (
                   <button
                     type="submit"
