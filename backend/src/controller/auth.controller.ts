@@ -152,6 +152,21 @@ export const verifyOtpForLogin = async (req:Request , res:Response)=>{
 
 }
 
+
+export const logoutController = async(req:Request , res:Response) =>{
+      res.clearCookie('token', {
+      httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+           
+            
+  });
+
+  return res.status(200).json({ message: 'Logged out successfully' });
+   
+      
+}
+
 // this is going to be used for getting the user info with the cookie token that we had set earlier.
 export const getUser = async (req: AuthRequest, res: Response) => {
   const user = req.user;

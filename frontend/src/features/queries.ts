@@ -134,3 +134,17 @@ export const deleteNote = async (noteId: string): Promise<string> => {
     return "Something went wrong, please try again.";
   }
 }
+
+
+export const logoutUser = async()=>{
+     try {
+    const res = await apiClient.post<messageResponse>('api/auth/logout');
+    return res.data.message;
+  } catch (error: any) {
+    if (error.response?.data?.message) {
+      return error.response.data.message as string;
+    }
+
+    return "Something went wrong, please try again.";
+  }
+}
